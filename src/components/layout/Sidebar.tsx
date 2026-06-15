@@ -87,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className={styles.sidebar__org}>
           <img src={iconSwitchOrg} alt="Switch Organization" width={16} height={16} />
           <span className={styles['sidebar__org-text']}>Switch Organization</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M6 9l6 6 6-6"/>
           </svg>
         </div>

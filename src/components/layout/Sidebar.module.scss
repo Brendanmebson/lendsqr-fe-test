@@ -35,9 +35,10 @@
   &__org {
     padding: 36px 30px 12px;
     @include mixins.flex(row, center, flex-start);
-    gap: 8px;
+    gap: 6px;
     cursor: pointer;
     margin-bottom: 16px;
+    white-space: nowrap;
 
     &-icon {
       width: 16px;
@@ -46,7 +47,7 @@
     }
 
     &-text {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
       color: variables.$text-dark;
     }
