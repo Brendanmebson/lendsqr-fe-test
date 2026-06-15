@@ -1,0 +1,228 @@
+@use "sass:color";
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  background: variables.$white;
+
+  @include mixins.tablet {
+    grid-template-columns: 1fr;
+  }
+
+  &__left {
+    background: variables.$white;
+    @include mixins.flex(column, flex-start, flex-start);
+    padding: 40px;
+    position: relative;
+
+    @include mixins.tablet {
+      display: none;
+    }
+
+    &-logo {
+      position: absolute;
+      width: 154.45px;
+      height: 32px;
+      top: 80px;
+      left: 86.22px;
+      opacity: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &-illustration {
+      width: 100%;
+      max-width: 640px;
+      margin: auto;
+      margin-top: 180px;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__right {
+    @include mixins.flex(column, flex-start, center);
+    padding: 80px 60px;
+    background: variables.$white;
+
+    @include mixins.tablet {
+      padding: 60px 40px;
+    }
+
+    @include mixins.mobile {
+      padding: 40px 24px;
+    }
+  }
+
+  &__mobile-logo {
+    display: none;
+    @include mixins.flex(row, center, flex-start);
+    gap: 8px;
+    margin-bottom: 40px;
+
+    span {
+      font-size: 22px;
+      font-weight: 700;
+      color: variables.$primary-dark;
+    }
+
+    @include mixins.tablet {
+      display: flex;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 700;
+    color: variables.$primary-dark;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: variables.$text-body;
+    margin-bottom: 40px;
+  }
+
+  &__field {
+    margin-bottom: 24px;
+
+    &-wrapper {
+      position: relative;
+      @include mixins.flex(row, center, flex-start);
+      border: 1px solid rgba(variables.$text-body, 0.2);
+      border-radius: variables.$radius-sm;
+      overflow: hidden;
+      transition: border-color 0.2s;
+
+      &:focus-within {
+        border-color: variables.$primary;
+      }
+
+      &.error {
+        border-color: variables.$status-blacklisted;
+      }
+
+      input {
+        flex: 1;
+        border: none;
+        padding: 16px 20px;
+        font-size: 14px;
+        color: variables.$text-body;
+        background: transparent;
+        outline: none;
+
+        &::placeholder {
+          color: rgba(variables.$text-body, 0.5);
+        }
+      }
+    }
+
+    &-toggle {
+      padding: 0 20px;
+      background: none;
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      color: variables.$primary;
+      text-transform: uppercase;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+
+      &:focus-visible {
+        outline: 2px solid variables.$primary;
+        outline-offset: 2px;
+      }
+    }
+
+    &-error {
+      font-size: 12px;
+      color: variables.$status-blacklisted;
+      margin-top: 6px;
+      display: block;
+    }
+  }
+
+  &__forgot {
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: variables.$primary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 28px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$primary;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    background: variables.$primary;
+    color: variables.$white;
+    border: none;
+    border-radius: variables.$radius-sm;
+    padding: 18px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+
+    &:hover {
+      background: color.adjust(#39CDCC, $lightness: -8%);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$primary-dark;
+      outline-offset: 2px;
+    }
+  }
+
+  &__error-msg {
+    background: rgba(variables.$status-blacklisted, 0.08);
+    color: variables.$status-blacklisted;
+    border: 1px solid rgba(variables.$status-blacklisted, 0.2);
+    border-radius: variables.$radius-sm;
+    padding: 12px 16px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}

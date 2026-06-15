@@ -1,0 +1,217 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.topbar {
+  height: variables.$topbar-height;
+  background: variables.$white;
+  box-shadow: 0 1px 0 variables.$border;
+  @include mixins.flex(row, center, space-between);
+  padding: 0 50px 0 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+
+  @include mixins.desktop {
+    left: 0;
+    padding: 0 20px;
+  }
+
+  &__left {
+    @include mixins.flex(row, center, flex-start);
+    gap: 12px;
+
+    @include mixins.desktop {
+      padding-left: 20px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    width: variables.$sidebar-width;
+    padding-left: 30px;
+    flex-shrink: 0;
+
+    @include mixins.desktop {
+      width: auto;
+      padding-left: 0;
+    }
+
+    img {
+      height: 24px;
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: variables.$text-dark;
+
+    @include mixins.desktop {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__search {
+    margin-left: 40px;
+    @include mixins.flex(row, center, flex-start);
+    border: 1px solid variables.$border;
+    border-radius: variables.$radius-md;
+    overflow: hidden;
+    height: 40px;
+
+    @include mixins.mobile {
+      display: none;
+    }
+
+    input {
+      border: none;
+      outline: none;
+      padding: 0 16px;
+      font-size: 14px;
+      color: variables.$text-body;
+      width: 310px;
+      background: transparent;
+
+      &::placeholder {
+        color: variables.$text-light;
+      }
+    }
+
+    button {
+      background: variables.$primary;
+      border: none;
+      height: 40px;
+      width: 56px;
+      cursor: pointer;
+      @include mixins.flex(row, center, center);
+      flex-shrink: 0;
+
+      svg {
+        color: variables.$white;
+      }
+    }
+  }
+
+  &__right {
+    @include mixins.flex(row, center, flex-end);
+    gap: 28px;
+  }
+
+  &__docs {
+    font-size: 16px;
+    color: variables.$text-dark;
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+    border: none;
+    background: none;
+
+    &:hover {
+      color: variables.$primary;
+    }
+  }
+
+  &__bell {
+    position: relative;
+    cursor: pointer;
+    color: variables.$text-dark;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &-dot {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 8px;
+      height: 8px;
+      background: variables.$primary;
+      border-radius: 50%;
+    }
+  }
+
+  &__user {
+    position: relative;
+
+    &-trigger {
+      @include mixins.flex(row, center, flex-start);
+      gap: 8px;
+      cursor: pointer;
+
+      img, .topbar__user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: variables.$primary-dark;
+        @include mixins.flex(row, center, center);
+        color: variables.$white;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .topbar__user-name {
+        font-size: 16px;
+        font-weight: 500;
+        color: variables.$text-dark;
+
+        @include mixins.mobile {
+          display: none;
+        }
+      }
+
+      svg {
+        color: variables.$text-dark;
+      }
+    }
+
+    &-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: variables.$white;
+      border-radius: variables.$radius-md;
+      box-shadow: variables.$dropdown-shadow;
+      min-width: 160px;
+      z-index: 60;
+      overflow: hidden;
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        font-size: 14px;
+        color: variables.$text-body;
+        cursor: pointer;
+        text-align: left;
+
+        &:hover {
+          background: rgba(variables.$primary, 0.05);
+          color: variables.$text-dark;
+        }
+
+        &:focus-visible {
+          outline: 2px solid variables.$primary;
+          outline-offset: -2px;
+        }
+
+        svg {
+          flex-shrink: 0;
+          color: variables.$text-body;
+        }
+      }
+    }
+  }
+}

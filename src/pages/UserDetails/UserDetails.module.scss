@@ -1,0 +1,374 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.details {
+  &__back {
+    @include mixins.flex(row, center, flex-start);
+    gap: 10px;
+    font-size: 16px;
+    color: variables.$text-body;
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin-bottom: 24px;
+    text-decoration: none;
+
+    &:hover {
+      color: variables.$text-dark;
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$primary;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+
+  &__header {
+    @include mixins.flex(row, center, space-between);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 500;
+      color: variables.$text-dark;
+    }
+  }
+
+  &__actions {
+    @include mixins.flex(row, center, flex-end);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__blacklist-btn {
+    border: 1px solid variables.$status-blacklisted;
+    background: none;
+    color: variables.$status-blacklisted;
+    border-radius: variables.$radius-sm;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      background: rgba(variables.$status-blacklisted, 0.06);
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$status-blacklisted;
+      outline-offset: 2px;
+    }
+  }
+
+  &__activate-btn {
+    border: 1px solid variables.$primary;
+    background: none;
+    color: variables.$primary;
+    border-radius: variables.$radius-sm;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      background: rgba(variables.$primary, 0.06);
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__profile-card {
+    background: variables.$white;
+    border-radius: variables.$radius-md;
+    box-shadow: variables.$card-shadow;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  &__profile-top {
+    padding: 28px 32px;
+    @include mixins.flex(row, center, flex-start);
+    gap: 28px;
+    flex-wrap: wrap;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(33, 63, 125, 0.16);
+    @include mixins.flex(row, center, center);
+    flex-shrink: 0;
+
+    svg {
+      color: variables.$text-dark;
+    }
+  }
+
+  &__name-block {
+    padding-right: 32px;
+    border-right: 1px solid variables.$border;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include mixins.tablet {
+      border-right: none;
+      height: auto;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 500;
+      color: variables.$text-dark;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 14px;
+      color: variables.$text-body;
+    }
+  }
+
+  &__tier {
+    padding: 0 32px;
+    border-right: 1px solid variables.$border;
+    text-align: center;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include mixins.tablet {
+      border-right: none;
+      height: auto;
+      padding: 0;
+    }
+
+    p {
+      font-size: 12px;
+      color: variables.$text-body;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__stars {
+    @include mixins.flex(row, center, center);
+    gap: 2px;
+  }
+
+  &__balance-block {
+    padding-left: 32px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include mixins.tablet {
+      padding-left: 0;
+      height: auto;
+    }
+  }
+
+  &__balance {
+    font-size: 22px;
+    font-weight: 500;
+    color: variables.$text-dark;
+    margin-bottom: 6px;
+  }
+
+  &__bank {
+    font-size: 12px;
+    color: variables.$text-body;
+  }
+
+  // Tabs
+  &__tabs {
+    @include mixins.flex(row, center, flex-start);
+    padding: 0 32px;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  &__tab {
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: variables.$text-body;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+
+    &:hover {
+      color: variables.$text-dark;
+    }
+
+    &.active {
+      color: variables.$primary;
+      border-bottom-color: variables.$primary;
+      font-weight: 500;
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$primary;
+      outline-offset: -2px;
+    }
+  }
+
+  // Content card
+  &__content-card {
+    background: variables.$white;
+    border-radius: variables.$radius-md;
+    box-shadow: variables.$card-shadow;
+    padding: 32px;
+  }
+
+  &__section {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid variables.$border;
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: variables.$text-dark;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 32px 16px;
+
+    @include mixins.desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__grid-2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 16px;
+
+    @include mixins.desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 16px;
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: variables.$text-body;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 15px;
+      font-weight: 500;
+      color: variables.$text-dark;
+    }
+  }
+
+  // Loading
+  &__loading {
+    padding: 80px;
+    text-align: center;
+    color: variables.$text-light;
+    font-size: 16px;
+  }
+
+  &__error {
+    padding: 80px;
+    text-align: center;
+
+    &-text {
+      font-size: 16px;
+      color: variables.$text-body;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: variables.$primary;
+      color: variables.$white;
+      border: none;
+      border-radius: variables.$radius-sm;
+      padding: 12px 28px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+
+  &__skeleton-profile {
+    padding: 28px 32px;
+    @include mixins.flex(row, center, flex-start);
+    gap: 28px;
+    border-bottom: 1px solid variables.$border;
+  }
+}

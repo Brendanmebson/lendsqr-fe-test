@@ -1,0 +1,119 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.pagination {
+  @include mixins.flex(row, center, space-between);
+  padding: 24px 0 8px;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  @include mixins.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__info {
+    @include mixins.flex(row, center, flex-start);
+    gap: 8px;
+    font-size: 14px;
+    color: variables.$text-body;
+  }
+
+  &__total {
+    color: variables.$text-dark;
+    font-weight: 600;
+  }
+
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: rgba(33, 63, 125, 0.08);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 26px 6px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: variables.$text-dark;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23213F7D' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+
+    &:focus {
+      outline: 2px solid variables.$primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__pages {
+    @include mixins.flex(row, center, flex-start);
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(33, 63, 125, 0.08);
+    @include mixins.flex(row, center, center);
+    cursor: pointer;
+    border: none;
+    color: variables.$text-dark;
+    transition: background 0.15s;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled):hover {
+      background: rgba(33, 63, 125, 0.16);
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__page {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: variables.$text-body;
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 0 6px;
+    transition: all 0.15s;
+
+    &:hover {
+      color: variables.$text-dark;
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    &.active {
+      font-weight: 600;
+      color: variables.$text-dark;
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$primary;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+
+  &__ellipsis {
+    min-width: 32px;
+    height: 32px;
+    @include mixins.flex(row, center, center);
+    font-size: 14px;
+    color: variables.$text-body;
+  }
+}

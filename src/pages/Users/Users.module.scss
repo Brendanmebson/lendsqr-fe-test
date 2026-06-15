@@ -1,0 +1,367 @@
+@use "sass:color";
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.users {
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: variables.$text-dark;
+    margin-bottom: 32px;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+
+    @include mixins.desktop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+  }
+
+  &__stat-card {
+    background: variables.$white;
+    border-radius: variables.$radius-md;
+    padding: 20px 24px;
+    box-shadow: variables.$card-shadow;
+
+    &-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      @include mixins.flex(row, center, center);
+      margin-bottom: 12px;
+    }
+
+    &-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: variables.$text-body;
+      margin-bottom: 8px;
+    }
+
+    &-value {
+      font-size: 24px;
+      font-weight: 600;
+      color: variables.$text-dark;
+    }
+  }
+
+  &__table-wrapper {
+    background: variables.$white;
+    border-radius: variables.$radius-md;
+    box-shadow: variables.$card-shadow;
+    overflow: hidden;
+  }
+
+  &__table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+
+    thead tr {
+      border-bottom: 1px solid variables.$border;
+    }
+
+    th {
+      padding: 20px 10px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: variables.$text-body;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    td {
+      padding: 20px 10px;
+      font-size: 12px;
+      color: variables.$text-body;
+      border-bottom: 1px solid variables.$border;
+      white-space: nowrap;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    tbody tr {
+      transition: background 0.1s;
+
+      &:hover {
+        background: rgba(variables.$primary, 0.02);
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__th-inner {
+    @include mixins.flex(row, center, flex-start);
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      color: variables.$text-dark;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      line-height: 0;
+      color: inherit;
+
+      &:focus-visible {
+        outline: 2px solid variables.$primary;
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  &__actions {
+    position: relative;
+    display: inline-block;
+
+    &--active {
+      z-index: 100;
+    }
+  }
+
+  &__actions-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: variables.$text-dark;
+    border-radius: 4px;
+    line-height: 0;
+
+    &:hover {
+      background: rgba(variables.$text-body, 0.08);
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__actions-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 4px);
+    background: variables.$white;
+    border-radius: variables.$radius-md;
+    box-shadow: variables.$dropdown-shadow;
+    min-width: 180px;
+    z-index: 10;
+    overflow: hidden;
+
+    &--upward {
+      top: auto;
+      bottom: calc(100% + 4px);
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 20px;
+      background: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: variables.$text-dark;
+      cursor: pointer;
+      text-align: left;
+
+      &:hover {
+        background: rgba(variables.$primary, 0.05);
+        color: variables.$text-dark;
+      }
+
+      &:focus-visible {
+        outline: 2px solid variables.$primary;
+        outline-offset: -2px;
+      }
+
+      svg {
+        flex-shrink: 0;
+        color: variables.$text-dark;
+      }
+    }
+  }
+
+  &__empty {
+    padding: 80px 24px;
+    text-align: center;
+
+    &-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    &-text {
+      font-size: 16px;
+      color: variables.$text-body;
+      margin-bottom: 8px;
+    }
+
+    &-sub {
+      font-size: 13px;
+      color: variables.$text-light;
+    }
+  }
+
+  &__error {
+    padding: 60px 24px;
+    text-align: center;
+
+    &-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    &-text {
+      font-size: 16px;
+      color: variables.$text-body;
+      margin-bottom: 20px;
+    }
+
+    &-retry {
+      background: variables.$primary;
+      color: variables.$white;
+      border: none;
+      border-radius: variables.$radius-sm;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover {
+        background: color.adjust(#39CDCC, $lightness: -8%);
+      }
+    }
+  }
+
+  &__pagination-wrap {
+    padding: 0 24px 20px;
+    border-top: 1px solid variables.$border;
+  }
+}
+
+// Filter dropdown
+.filter {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: variables.$white;
+  border-radius: variables.$radius-md;
+  box-shadow: variables.$dropdown-shadow;
+  padding: 24px;
+  width: 280px;
+  z-index: 20;
+
+  &__field {
+    margin-bottom: 16px;
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: variables.$text-dark;
+      margin-bottom: 8px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid variables.$border;
+      border-radius: variables.$radius-sm;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: variables.$text-body;
+      background: variables.$white;
+      appearance: none;
+
+      &:focus {
+        border-color: variables.$primary;
+        outline: none;
+      }
+
+      &::placeholder {
+        color: rgba(variables.$text-body, 0.4);
+      }
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23213F7D' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  &__reset {
+    border: 1px solid variables.$text-body;
+    background: none;
+    border-radius: variables.$radius-md;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: variables.$text-body;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      border-color: variables.$primary-dark;
+      color: variables.$primary-dark;
+    }
+  }
+
+  &__apply {
+    background: variables.$primary;
+    color: variables.$white;
+    border: 1px solid variables.$primary;
+    border-radius: variables.$radius-md;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      background: color.adjust(#39CDCC, $lightness: -8%);
+      border-color: color.adjust(#39CDCC, $lightness: -8%);
+    }
+  }
+}

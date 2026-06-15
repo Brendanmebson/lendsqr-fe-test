@@ -1,0 +1,71 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.dashboard {
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: variables.$text-dark;
+    margin-bottom: 4px;
+  }
+
+  &__subtitle {
+    color: variables.$text-body;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+
+    @include mixins.desktop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background: variables.$white;
+    border-radius: variables.$radius-md;
+    padding: 20px 24px;
+    box-shadow: variables.$card-shadow;
+
+    &-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      @include mixins.flex(row, center, center);
+      margin-bottom: 12px;
+    }
+
+    &-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: variables.$text-body;
+      margin-bottom: 8px;
+    }
+
+    &-value {
+      font-size: 24px;
+      font-weight: 600;
+      color: variables.$text-dark;
+    }
+  }
+
+  &__placeholder {
+    background: variables.$white;
+    border-radius: variables.$radius-md;
+    padding: 60px;
+    text-align: center;
+    color: variables.$text-light;
+    box-shadow: variables.$card-shadow;
+  }
+}
