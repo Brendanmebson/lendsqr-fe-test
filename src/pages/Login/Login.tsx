@@ -57,6 +57,11 @@ const Login: React.FC = () => {
 
       {/* Right — form */}
       <div className={styles.login__right}>
+        {/* Mobile logo — shown only on tablet/mobile */}
+        <div className={styles['login__mobile-logo']}>
+          <img src={logo} alt="Lendsqr Logo" />
+        </div>
+
         <form className={styles.login__form} onSubmit={handleSubmit} noValidate>
           <h1 className={styles.login__title}>Welcome!</h1>
           <p className={styles.login__subtitle}>Enter details to login.</p>

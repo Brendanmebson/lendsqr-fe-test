@@ -62,19 +62,21 @@
 
     @include mixins.mobile {
       padding: 40px 24px;
+      align-items: center;
     }
   }
 
   &__mobile-logo {
     display: none;
-    @include mixins.flex(row, center, flex-start);
+    @include mixins.flex(row, center, center);
     gap: 8px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    width: 100%;
+    text-align: center;
 
-    span {
-      font-size: 22px;
-      font-weight: 700;
-      color: variables.$primary-dark;
+    img {
+      height: 30px;
+      object-fit: contain;
     }
 
     @include mixins.tablet {
@@ -85,6 +87,10 @@
   &__form {
     width: 100%;
     max-width: 420px;
+
+    @include mixins.mobile {
+      text-align: center;
+    }
   }
 
   &__title {

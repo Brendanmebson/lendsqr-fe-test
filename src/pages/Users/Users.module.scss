@@ -8,6 +8,11 @@
     font-weight: 500;
     color: variables.$text-dark;
     margin-bottom: 32px;
+
+    @include mixins.mobile {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
   }
 
   &__stats {
@@ -61,6 +66,12 @@
     border-radius: variables.$radius-md;
     box-shadow: variables.$card-shadow;
     overflow: hidden;
+
+    @include mixins.mobile {
+      border-radius: 0;
+      box-shadow: none;
+      border: 1px solid variables.$border;
+    }
   }
 
   &__table-scroll {
@@ -72,6 +83,11 @@
     width: 100%;
     border-collapse: collapse;
     min-width: 800px;
+
+    @include mixins.mobile {
+      min-width: 600px;
+      font-size: 11px;
+    }
 
     thead tr {
       border-bottom: 1px solid variables.$border;
@@ -287,6 +303,10 @@
   &__pagination-wrap {
     padding: 0 24px 20px;
     border-top: 1px solid variables.$border;
+
+    @include mixins.mobile {
+      padding: 0 12px 16px;
+    }
   }
 }
 

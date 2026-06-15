@@ -101,6 +101,10 @@
   &__right {
     @include mixins.flex(row, center, flex-end);
     gap: 28px;
+
+    @include mixins.mobile {
+      gap: 14px;
+    }
   }
 
   &__docs {
@@ -111,6 +115,10 @@
     cursor: pointer;
     border: none;
     background: none;
+
+    @include mixins.mobile {
+      display: none;
+    }
 
     &:hover {
       color: variables.$primary;
