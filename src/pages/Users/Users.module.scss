@@ -80,24 +80,41 @@
     th {
       padding: 20px 10px;
       text-align: left;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: variables.$text-body;
       white-space: nowrap;
       position: relative;
+
+      &:first-child {
+        padding-left: 24px;
+      }
+
+      &:last-child {
+        width: 1%;
+        padding-left: 0;
+        padding-right: 24px;
+      }
     }
 
     td {
       padding: 20px 10px;
-      font-size: 12px;
+      font-size: 13px;
       color: variables.$text-body;
       border-bottom: 1px solid variables.$border;
       white-space: nowrap;
 
+      &:first-child {
+        padding-left: 24px;
+      }
+
       &:last-child {
         text-align: right;
+        width: 1%;
+        padding-left: 0;
+        padding-right: 24px;
       }
     }
 

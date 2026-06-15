@@ -20,8 +20,7 @@
   }
 
   &__total {
-    color: variables.$text-dark;
-    font-weight: 600;
+    color: variables.$text-body;
   }
 
   &__select {
@@ -47,14 +46,14 @@
 
   &__pages {
     @include mixins.flex(row, center, flex-start);
-    gap: 4px;
+    gap: 16px;
     flex-wrap: wrap;
   }
 
   &__arrow {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
     background: rgba(33, 63, 125, 0.08);
     @include mixins.flex(row, center, center);
     cursor: pointer;
@@ -78,12 +77,12 @@
   }
 
   &__page {
-    min-width: 32px;
-    height: 32px;
+    min-width: 24px;
+    height: 24px;
     border-radius: 4px;
     background: none;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     color: variables.$text-body;
     opacity: 0.6;
     cursor: pointer;
@@ -110,10 +109,11 @@
   }
 
   &__ellipsis {
-    min-width: 32px;
-    height: 32px;
+    min-width: 24px;
+    height: 24px;
     @include mixins.flex(row, center, center);
-    font-size: 14px;
+    font-size: 16px;
     color: variables.$text-body;
+    opacity: 0.6;
   }
 }

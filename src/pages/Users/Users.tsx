@@ -169,10 +169,12 @@ const Users: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className={styles['users__table-wrapper']}>
-        {loading ? (
+      {loading ? (
+        <div className={styles['users__table-wrapper']}>
           <TableSkeleton />
-        ) : error ? (
+        </div>
+      ) : error ? (
+        <div className={styles['users__table-wrapper']}>
           <div className={styles.users__error} role="alert">
             <div className={styles['users__error-icon']}>⚠️</div>
             <p className={styles['users__error-text']}>{error}</p>
@@ -180,8 +182,10 @@ const Users: React.FC = () => {
               Try Again
             </button>
           </div>
-        ) : (
-          <>
+        </div>
+      ) : (
+        <>
+          <div className={styles['users__table-wrapper']}>
             <div className={styles['users__table-scroll']}>
               <table className={styles.users__table} aria-label="Users list">
                 <thead>
@@ -271,20 +275,20 @@ const Users: React.FC = () => {
                 </tbody>
               </table>
             </div>
+          </div>
 
-            <div className={styles['users__pagination-wrap']}>
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                pageSize={pageSize}
-                totalItems={totalUsers}
-                onPageChange={handlePageChange}
-                onPageSizeChange={handlePageSizeChange}
-              />
-            </div>
-          </>
-        )}
-      </div>
+          <div className={styles['users__pagination-wrap']}>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              pageSize={pageSize}
+              totalItems={totalUsers}
+              onPageChange={handlePageChange}
+              onPageSizeChange={handlePageSizeChange}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
